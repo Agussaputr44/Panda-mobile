@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "733280171641",
+    "firebase_url": "https://panda-mobile-unair-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "panda-mobile-unair",
+    "storage_bucket": "panda-mobile-unair.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:733280171641:android:5076ce87289b5ce751c6a8",
+        "android_client_info": {
+          "package_name": "com.example.fe_panda_unair"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "733280171641-3bmkfdak6q9l5pueqoacd65barhdp7ea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGPaVP31s8G4F60Nxd9yEce4VFr33MwnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "733280171641-3bmkfdak6q9l5pueqoacd65barhdp7ea.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "733280171641-466n8dtl3vgb5v1k8bcuhaa5fb8rer4q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.fePandaUnair"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

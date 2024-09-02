@@ -6,7 +6,6 @@ import 'package:fe_panda_unair/page/splash_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Inisialisasi Firebase
   try {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
@@ -15,7 +14,6 @@ void main() async {
     print('Error initializing Firebase: $e');
   }
 
-  // Jalankan aplikasi setelah Firebase diinisialisasi
   runApp(const MyApp());
 }
 

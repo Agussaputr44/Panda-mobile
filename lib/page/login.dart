@@ -1,9 +1,8 @@
-import 'package:fe_panda_unair/assets/warna.dart';
-import 'package:fe_panda_unair/page/sign_up.dart';
 import 'package:fe_panda_unair/widget/custom_navbar_bottom.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
 
 void main() {
   runApp(const LoginPage());
@@ -56,201 +55,85 @@ class LoginPage extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Warna.secondary,
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: screenSize.height * 0.2,
-                child: Image.asset(
-                  "lib/img/Panda.png",
-                  height: screenSize.height * 0.15,
-                  width: screenSize.width * 0.2,
+        body: Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("lib/img/background.jpg"), // Gambar latar belakang
+                  fit: BoxFit.cover,
                 ),
               ),
-              const SizedBox(height: 20),
-              Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: screenSize.width * 0.1),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Login to your account",
+            ),
+            Container(
+              color: Colors.black.withOpacity(0.5), // Latar belakang semi-transparan
+            ),
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    "lib/img/Panda.png",
+                    height: screenSize.height * 0.2,
+                    width: screenSize.width * 0.4,
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    "Welcome to Panda App",
                     style: TextStyle(
-                      fontSize: screenSize.width * 0.05,
-                      fontWeight: FontWeight.w700,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 217, 217, 217),
                       fontFamily: 'Poppins',
                     ),
                   ),
-                ),
-              ),
-              const SizedBox(height: 20),
-              Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: screenSize.width * 0.1),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.9),
-                        spreadRadius: 1,
-                        blurRadius: 4,
-                        offset: const Offset(0, 2),
-                      ),
-                    ],
-                  ),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      labelText: 'Email',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                        borderSide: BorderSide.none,
-                      ),
-                      contentPadding: EdgeInsets.symmetric(
-                          vertical: screenSize.width * 0.04,
-                          horizontal: screenSize.width * 0.05),
-                      filled: true,
-                      fillColor: Warna.secondary,
-                    ),
-                    style: const TextStyle(fontFamily: 'Poppins'),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
-              Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: screenSize.width * 0.1),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.9),
-                        spreadRadius: 1,
-                        blurRadius: 4,
-                        offset: const Offset(0, 2),
-                      ),
-                    ],
-                  ),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                        borderSide: BorderSide.none,
-                      ),
-                      contentPadding: EdgeInsets.symmetric(
-                          vertical: screenSize.width * 0.04,
-                          horizontal: screenSize.width * 0.05),
-                      filled: true,
-                      fillColor: Warna.secondary,
-                    ),
-                    style: const TextStyle(fontFamily: 'Poppins'),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
-              Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: screenSize.width * 0.1),
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Warna.primary),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                  ),
-                  onPressed: () {
-                    // Tambahkan logika untuk login dengan email dan password di sini
-                  },
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: screenSize.width * 0.05),
-                      child: const Text(
-                        'Login',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w700,
-                            fontSize: 18,
-                            color: Colors.white),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
-              Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: screenSize.width * 0.1),
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(
-                        Colors.red), // Ubah warna tombol sesuai kebutuhan
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                  ),
-                  onPressed: () {
-                    // Panggil fungsi untuk login dengan Google ketika tombol ditekan
-                    _signInWithGoogle(context);
-                  },
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: screenSize.width * 0.05),
-                      child: const Text(
-                        'Login with Google',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.white,
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.white),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          side: BorderSide(color: Color.fromARGB(232, 24, 42, 137)),
                         ),
                       ),
+                      shadowColor: MaterialStateProperty.all(Colors.black.withOpacity(0.3)),
+                      elevation: MaterialStateProperty.all(8),
                     ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
-              Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: screenSize.width * 0.1),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    const Text('Don’t have an account?'),
-                    const SizedBox(width: 5),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Register()),
-                        );
-                      },
-                      child: Text(
-                        "Sign Up",
-                        style: TextStyle(
-                            color: Warna.primary, fontWeight: FontWeight.w600),
+                    onPressed: () {
+                      _signInWithGoogle(context);
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: screenSize.width * 0.02,
+                          horizontal: screenSize.width * 0.04),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            "lib/img/google.png", // Gambar logo Google
+                            height: screenSize.height * 0.03,
+                          ),
+                          const SizedBox(width: 12),
+                          Text(
+                            'Sign in with Google',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Poppins',
+                              color: Color.fromARGB(232, 24, 42, 137),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

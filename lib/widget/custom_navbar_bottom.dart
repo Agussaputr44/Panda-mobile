@@ -28,7 +28,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late int currentScreen = 0;
   //
-  final Screens = [Home(), Pengaduan(),RiwayatPengaduan(), Profile()];
+  final Screens = [Home(), PengaduanPage(),RiwayatPengaduan(), Profile()];
 
   //
   @override
